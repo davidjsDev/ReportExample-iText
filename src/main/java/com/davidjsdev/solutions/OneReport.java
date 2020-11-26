@@ -4,6 +4,7 @@ import com.davidjsdev.model.Client;
 import com.davidjsdev.model.InfoReport;
 import com.davidjsdev.model.ItemSale;
 import com.davidjsdev.model.User;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -22,7 +23,7 @@ import javax.print.DocFlavor;
 import java.io.File;
 import java.util.List;
 
-public class Report {
+public class OneReport {
     public static final String fileName = "Reporte";
     public static final String DEST = System.getProperty("user.dir") + "/src/main/resources/Reports/" + fileName + ".pdf";
 
@@ -30,7 +31,7 @@ public class Report {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
-        Document doc = new Document(pdfDoc);
+        Document doc = new Document(pdfDoc, PageSize.A5.rotate() );
         Table outerTable = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
         outerTable.addCell(Head(infoReport));
         outerTable.addCell(HeadInfoClient(client,infoReport));
@@ -269,9 +270,9 @@ public class Report {
 
         //innertable.addCell(ColumnFooter());
 
-        innertable.addCell(createCell("Totals", 2, 2, TextAlignment.LEFT));
-        innertable.addCell(createCell("$1,552.00", 2, 1, TextAlignment.RIGHT));
-        innertable.addCell(createCell("$1,552.00", 2, 1, TextAlignment.RIGHT));
+        innertable.addCell(createCell("Totals", 0, 2, TextAlignment.LEFT));
+        innertable.addCell(createCell("$1,552.00", 0, 1, TextAlignment.RIGHT));
+        innertable.addCell(createCell("$1,552.00", 0, 1, TextAlignment.RIGHT));
 
         cell = new Cell().add(innertable);
         cell.setNextRenderer(new RoundedBorderCellRenderer(cell));

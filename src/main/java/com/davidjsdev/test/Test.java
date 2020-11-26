@@ -4,7 +4,7 @@ import com.davidjsdev.model.Client;
 import com.davidjsdev.model.InfoReport;
 import com.davidjsdev.model.ItemSale;
 import com.davidjsdev.model.User;
-import com.davidjsdev.solutions.Report;
+import com.davidjsdev.solutions.OneReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +17,13 @@ public class Test {
         ItemSale it;
         List<ItemSale> itemSaleList = new ArrayList<>();
 
-        for (int j = 0; j < 1000 ; j++){
+        for (int j = 0; j < 10 ; j++){
             itemSaleList.add( it = new ItemSale(30, "Mause Logitech", 200));
         }
 
         //System.out.println(itemSaleList);
 
-        Report.Print( "des",i,c,itemSaleList,u );
+        OneReport.Print( "des",i,c,itemSaleList,u );
 
     }
 }
